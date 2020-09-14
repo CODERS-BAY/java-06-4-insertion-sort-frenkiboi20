@@ -1,5 +1,7 @@
 package com.codersbay;
 
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -8,27 +10,26 @@ public class Main {
 
         unsorted = insertionSort(unsorted);
 
-        for (int i = 0; i < unsorted.length; i++) {
-            System.out.print(unsorted[i] + ", ");
-        }
+        System.out.println(Arrays.toString(unsorted));
 
     }
 
-    public static int[] insertionSort(int[] zahlen) {
+    public static int[] insertionSort(int array[]) {
 
-        int[] sorted = new int[zahlen.length];
+        for (int j = 1; j < array.length; j++) {
 
-        for (int i = 0; i < zahlen.length; i++) {
-            int min = Integer.MAX_VALUE;
-            for (int j = 0; j < zahlen.length; j++) {
-                if (min > zahlen[j]) {
-                    int k = min;
-                    min = zahlen[j];
-                    zahlen[j] = k;
-                }
+            int key = array[j];
+            int i = j - 1;
+
+            while ((i > -1) && (array[i] > key)) {
+
+                array[i + 1] = array[i];
+                i--;
+
             }
-            sorted[i] = min;
+
+            array[i + 1] = key;
         }
-        return sorted;
+        return array;
     }
 }
