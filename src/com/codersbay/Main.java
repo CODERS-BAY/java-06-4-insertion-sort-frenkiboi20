@@ -14,21 +14,21 @@ public class Main {
 
     }
 
-    public static int[] insertionSort(int array[]) {
+    public static int[] insertionSort(int[] array) {
 
-        for (int j = 1; j < array.length; j++) {
+        for (int startOfUnsorted = 1; startOfUnsorted < array.length; startOfUnsorted++) {
 
-            int key = array[j];
-            int i = j - 1;
+            int nextUnsortedElement = array[startOfUnsorted];
+            int greatestElementIndex = startOfUnsorted - 1;
 
-            while ((i > -1) && (array[i] > key)) {
+            while ((greatestElementIndex > -1) && (array[greatestElementIndex] > nextUnsortedElement)) {
 
-                array[i + 1] = array[i];
-                i--;
+                array[greatestElementIndex + 1] = array[greatestElementIndex];
+                greatestElementIndex--;
 
             }
 
-            array[i + 1] = key;
+            array[greatestElementIndex + 1] = nextUnsortedElement;
         }
         return array;
     }
